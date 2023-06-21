@@ -5,17 +5,24 @@
  */
 package Archivos;
 
+import java.applet.AudioClip;
+
 /**
  *
  * @author Frank
  */
 public class Menu extends javax.swing.JFrame {
 
+    
+    
     /**
      * Creates new form Menu
      */
     public Menu() {
         initComponents();
+        AudioClip Music;
+        Music= java.applet.Applet.newAudioClip(getClass().getResource("Sonidos/musiquita.wav"));
+        Music.play();      
         this.setLocationRelativeTo(null);
         rsscalelabel.RSScaleLabel.setScaleLabel(lbName, "src/imagenes/Rectangle 2.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(lbStart, "src/imagenes/Rectangle 5.png");
@@ -30,6 +37,7 @@ public class Menu extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(lbOceano, "src/imagenes/oceano 3.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(lbSuelo, "src/imagenes/suelo.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(lbConcha, "src/imagenes/Conchita.png");
+        
     }
 
     /**
@@ -63,11 +71,16 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(184, 182, 244));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnStart.setBackground(new java.awt.Color(139, 200, 234));
+        btnStart.setBackground(new java.awt.Color(140, 200, 234));
         btnStart.setFont(new java.awt.Font("sansserif", 1, 10)); // NOI18N
-        btnStart.setText("Start");
+        btnStart.setText("Iniciar");
         btnStart.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 0, new java.awt.Color(0, 0, 0)));
         btnStart.setBorderPainted(false);
+        btnStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 200, 120, 30));
         jPanel1.add(lbStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 200, 140, 50));
 
@@ -110,6 +123,13 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
 
+    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+        // TODO add your handling code here:
+        Info n= new Info();
+        this.setVisible(false);
+        n.setVisible(true);
+    }//GEN-LAST:event_btnStartActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -143,6 +163,7 @@ public class Menu extends javax.swing.JFrame {
                 new Menu().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -163,4 +184,10 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JTextField txtName;
     // End of variables declaration//GEN-END:variables
+
+    private static class Musica {
+
+        public Musica() {
+        }
+    }
 }

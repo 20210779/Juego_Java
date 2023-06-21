@@ -4,6 +4,7 @@
  */
 package Archivos;
 
+import java.applet.AudioClip;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,6 +30,9 @@ public class Menu_principal extends javax.swing.JFrame {
     
     public Menu_principal() {          
         initComponents();
+        AudioClip Musica;
+        Musica= java.applet.Applet.newAudioClip(getClass().getResource("Sonidos/Musiquita.wav"));
+        Musica.play();
         this.setVisible(true);
         //Contador 
         //Posiciona al centro el JFrame
