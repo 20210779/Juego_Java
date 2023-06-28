@@ -6,6 +6,9 @@
 package Archivos;
 
 import java.applet.AudioClip;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -67,6 +70,7 @@ public class Menu extends javax.swing.JFrame {
         lbOceano3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(184, 182, 244));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -117,6 +121,7 @@ public class Menu extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -125,9 +130,34 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         // TODO add your handling code here:
-        Info n= new Info();
-        this.setVisible(false);
-        n.setVisible(true);
+        
+        String sentencia = "INSERT INTO Resultados (Nombre) VALUES (?);";
+        
+        try 
+        {
+            if (txtName.getText().length()== 0) {
+                JOptionPane.showMessageDialog(this, "Ingrese un nombre");
+            }
+            
+            else
+            {
+            PreparedStatement addRegistro = conexion.getConexion().prepareStatement(sentencia);
+            addRegistro.setString(1,txtName.getText());
+            addRegistro.executeUpdate();
+            
+            txtName.setText("");
+               
+            win abrir= new win();
+            this.setVisible(false);
+            abrir.setVisible(true);
+            } 
+        } 
+        catch (SQLException ex) 
+        {
+            
+            JOptionPane.showMessageDialog(this, ex.toString());
+        }
+
     }//GEN-LAST:event_btnStartActionPerformed
 
     /**
