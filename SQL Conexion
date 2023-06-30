@@ -1,0 +1,24 @@
+Create Database OctopusRuns;
+GO
+
+USE OctopusRuns;
+GO
+
+CREATE TABLE Resultados (
+    ID INT  identity(1,1) PRIMARY KEY ,
+    Nombre VARCHAR(50),
+    Resultado VARCHAR(10)
+);
+
+
+-- Insertar datos
+INSERT INTO Resultados (Nombre, Resultado) VALUES ('Juan', 'Ganó');
+INSERT INTO Resultados (Nombre, Resultado) VALUES ('María', 'Perdió');
+INSERT INTO Resultados (Nombre, Resultado) VALUES ('tomas', '');
+INSERT INTO Resultados (Nombre, Resultado) VALUES ('Carlos', '');
+INSERT INTO Resultados (Nombre, Resultado) VALUES ('mario', '');
+
+-- Mostrar todos los registros
+SELECT * FROM Resultados;
+
+select top 1 Nombre from Resultados ORDER BY ID DESC /sentencia a utilizar para mostrar en la ventana de game over/
